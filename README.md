@@ -1,58 +1,289 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚗 Sistema de Reservas de Autos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web desarrollado con **Laravel** para la gestión de reservas de vehículos.
 
-## About Laravel
+El proyecto está desarrollado como trabajo grupal y utiliza **Laravel 13**, **PHP 8.3+**, **PostgreSQL** y **Vite**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Tecnologías utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Laravel:** 13.32.0
+* **PHP:** 8.3+
+* **Base de datos:** PostgreSQL 18
+* **Node.js:** 18+
+* **NPM**
+* **Composer**
+* **Vite**
+* **Git / GitHub**
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📁 Estructura de ramas
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+El proyecto utiliza dos ramas principales:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+```text
+main
+└── Versión estable del proyecto
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+develop
+└── Rama principal de desarrollo
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Flujo de trabajo
 
-## Contributing
+Cada integrante debe crear su propia rama a partir de `develop`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Ejemplo:
 
-## Code of Conduct
+```bash
+git checkout develop
+git pull origin develop
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+git checkout -b feature/nombre-de-la-funcionalidad
+```
 
-## Security Vulnerabilities
+Después de realizar los cambios:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+git add .
+git commit -m "Descripción del cambio"
+git push origin feature/nombre-de-la-funcionalidad
+```
 
-## License
+Posteriormente se debe crear un **Pull Request hacia `develop`** para revisar e integrar los cambios.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+# ⚙️ Instalación del proyecto
+
+## 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/Nicks555/sistema-reservas-de-autos.git
+```
+
+Ingresar a la carpeta:
+
+```bash
+cd sistema-reservas-de-autos
+```
+
+---
+
+## 2. Instalar dependencias de PHP
+
+```bash
+composer install
+```
+
+---
+
+## 3. Instalar dependencias de Node.js
+
+```bash
+npm install
+```
+
+---
+
+## 4. Configurar el archivo `.env`
+
+Copiar el archivo de configuración:
+
+### Windows
+
+```bash
+copy .env.example .env
+```
+
+### Linux / macOS
+
+```bash
+cp .env.example .env
+```
+
+---
+
+## 5. Configurar PostgreSQL
+
+Crear una base de datos llamada:
+
+```text
+sistema_reservas
+```
+
+En el archivo `.env`, configurar:
+
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=sistema_reservas
+DB_USERNAME=postgres
+DB_PASSWORD=
+```
+
+⚠️ **No subir el archivo `.env` a GitHub.**
+
+Cada integrante debe colocar sus propias credenciales de PostgreSQL en su archivo `.env`.
+
+---
+
+## 6. Generar la clave de Laravel
+
+Ejecutar:
+
+```bash
+php artisan key:generate
+```
+
+---
+
+## 7. Ejecutar las migraciones
+
+```bash
+php artisan migrate
+```
+
+Esto creará las tablas necesarias en la base de datos.
+
+---
+
+## 8. Ejecutar el proyecto
+
+En una terminal:
+
+```bash
+php artisan serve
+```
+
+Laravel estará disponible normalmente en:
+
+```text
+http://127.0.0.1:8000
+```
+
+En otra terminal ejecutar Vite:
+
+```bash
+npm run dev
+```
+
+---
+
+# 🔄 Actualizar el proyecto
+
+Antes de comenzar a trabajar, siempre actualizar la rama `develop`:
+
+```bash
+git checkout develop
+git pull origin develop
+```
+
+Después crear la rama correspondiente a la tarea:
+
+```bash
+git checkout -b feature/nombre-de-la-tarea
+```
+
+---
+
+# 🧑‍💻 Reglas de trabajo del equipo
+
+Para evitar conflictos entre integrantes:
+
+* No trabajar directamente sobre `main`.
+* Evitar trabajar directamente sobre `develop` salvo tareas coordinadas.
+* Cada funcionalidad debe realizarse en una rama propia.
+* Hacer commits pequeños y descriptivos.
+* Antes de comenzar una tarea, actualizar `develop`.
+* Antes de crear un Pull Request, verificar que el proyecto funcione correctamente.
+* Los cambios deben integrarse mediante Pull Request hacia `develop`.
+* `main` debe mantenerse como versión estable.
+
+---
+
+# 📝 Ejemplos de nombres de ramas
+
+Para nuevas funcionalidades:
+
+```text
+feature/reservas
+feature/clientes
+feature/vehiculos
+feature/pagos
+```
+
+Para correcciones:
+
+```text
+fix/error-reservas
+fix/error-login
+fix/error-validacion
+```
+
+---
+
+# 💾 Ejemplos de commits
+
+Se recomienda utilizar mensajes claros:
+
+```bash
+git commit -m "Agregar CRUD de vehículos"
+```
+
+```bash
+git commit -m "Implementar módulo de reservas"
+```
+
+```bash
+git commit -m "Corregir validación de clientes"
+```
+
+---
+
+# 🔐 Información importante
+
+Los siguientes archivos y datos **no deben subirse al repositorio**:
+
+```text
+.env
+/vendor
+/node_modules
+```
+
+Las credenciales de la base de datos son personales y cada integrante debe configurar su propio archivo `.env`.
+
+---
+
+# 👥 Trabajo colaborativo
+
+Repositorio oficial:
+
+**Sistema de Reservas de Autos**
+
+```text
+https://github.com/Nicks555/sistema-reservas-de-autos
+```
+
+Los integrantes del equipo deben ser agregados como colaboradores del repositorio de GitHub.
+
+---
+
+# 📌 Estado del proyecto
+
+Actualmente el proyecto se encuentra en etapa de desarrollo.
+
+**Rama principal de desarrollo:**
+
+```text
+develop
+```
+
+**Rama estable:**
+
+```text
+main
+```
